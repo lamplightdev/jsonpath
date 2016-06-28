@@ -5097,7 +5097,8 @@ JSONPath.prototype._normalize = function(path) {
 }
 
 function _is_string(obj) {
-  return toString.call(obj) == '[object String]';
+  // IE can choke on this without Object.prototype
+  return Object.prototype.toString.call(obj) == '[object String]';
 }
 
 JSONPath.Handlers = Handlers;
